@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Fresh palette: aqua brand on a cool white page, navy text, one warm sun accent used sparingly */
+@theme {
+  --color-brand: #0d9488;
+  --color-brand-dark: #0f766e;
+  --color-mint: #e6f6f2;
+  --color-ink: #10263a;
+  --color-paper: #f6fbfa;
+  --color-line: #d8e7e3;
+  --color-sun: #ffb547;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+}
+
+@layer base {
+  /* scroll-padding keeps section titles from hiding under the sticky header */
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-paper text-ink antialiased; }
+  /* Styled once here because every form in the app uses the same fields */
+  input, select { @apply my-1.5 block w-full rounded-xl border border-line bg-white px-3.5 py-3 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/15; }
+}
+
+@layer components {
+  .btn { @apply cursor-pointer rounded-xl bg-brand px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50; }
+  .choice { @apply cursor-pointer rounded-2xl border border-line bg-white p-4 text-left transition hover:border-brand/60 hover:bg-mint/50 disabled:cursor-not-allowed disabled:bg-paper disabled:line-through disabled:opacity-40 disabled:hover:border-line; }
+  .choice.active { @apply border-brand bg-mint ring-2 ring-brand; }
+}
